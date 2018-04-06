@@ -1,0 +1,13 @@
+{application, stenographer, [
+	{description, "InfluxDB TCP/UDP Client"},
+	{vsn, "1"},
+	{registered, []},
+	{applications, [ kernel, stdlib ]},
+	{mod, { stenographer_app, [] } },
+	{env, [
+            {protocol, tcp},
+            {host, "127.0.0.1"},
+            {port, 8094},
+            {reconnect_interval, 1000}
+        ]}
+]}.

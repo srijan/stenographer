@@ -1,8 +1,0 @@
-{application, influx, [
-	{description, "InfluxDB UDP Client"},
-	{vsn, "1"},
-	{registered, []},
-	{applications, [ kernel, stdlib ]},
-	{mod, { influx_app, [] } },
-	{env, []}
-]}.
