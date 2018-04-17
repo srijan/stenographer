@@ -8,6 +8,9 @@
             {protocol, tcp},
             {host, "127.0.0.1"},
             {port, 8094},
-            {reconnect_interval, 1000}
+            {reconnect_interval, 1000},
+            {tags, #{}},
+            {host_as_tag, true},
+            {node_name_as_tag, false}
         ]}
 ]}.

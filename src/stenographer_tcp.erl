@@ -19,7 +19,7 @@ init([]) ->
 handle_cast({send, _Data}, undefined) ->
     {noreply, undefined};
 handle_cast({send, Data}, Sock) ->
-    ok = gen_tcp:send(Sock, <<Data/binary, $\r, $\n>>),
+    ok = gen_tcp:send(Sock, <<Data/binary, $\n>>),
     {noreply, Sock};
 handle_cast(_Msg, S) ->
     {noreply, S}.

@@ -39,7 +39,7 @@
 %% neither 'measurement' nor 'fields' key. 
 %%
 %% @example
-%%   influx_line:encode(
+%%   stenographer_line:encode(
 %%     #{
 %%        measurement => cpu,
 %%        fields => #{ value => 43},
@@ -94,7 +94,7 @@ encode(Name, Fields, Tags) ->
 %%
 %% @example
 %%   %% several points (uniq times)
-%%   influx_line:encode(
+%%   stenographer_line:encode(
 %%     cpu,
 %%     [
 %%       #{ value => 43 },
@@ -107,7 +107,7 @@ encode(Name, Fields, Tags) ->
 %%          cpu,host=eu-west,ip="127.0.0.1" value=12 1000000001\n">>
 %%
 %%   %% one point without time
-%%   influx_line:encode(
+%%   stenographer_line:encode(
 %%     cpu,
 %%     [
 %%       #{ value => 43 },
@@ -142,7 +142,7 @@ encode(_, _, _, _) -> {error, invalid_data}.
 %% @end
 -spec timestamp() -> Time::non_neg_integer().
 timestamp() ->
-    os:system_time(micro_seconds).
+    os:system_time(nano_seconds).
 
 %% ------------------------------------------------------------------
 %% Internal Function Definitions
@@ -168,7 +168,7 @@ encode_list(Name, List, Tags, Time) when is_integer(Time) ->
 	encode_list_with_time(undefined, List, Prefix, Time, []);
 
 encode_list(Name, List, Tags, _Time) ->
-	encode_list(Name, List, Tags, influx_line:timestamp()).
+	encode_list(Name, List, Tags, timestamp()).
 
 encode_list_with_time({error, _} = Error, _, _, _, _) ->
 	Error;
