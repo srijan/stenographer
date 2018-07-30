@@ -1,6 +1,6 @@
 -module(stenographer_utils).
 
--export([add_default_tags/1]).
+-export([add_default_tags/1, timestamp/0]).
 
 add_default_tags(Tags) ->
     merge_tags(host_tag()++node_name_tag(), merge_tags(default_tags(), Tags)).
